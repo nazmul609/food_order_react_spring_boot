@@ -5,6 +5,7 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import MenuCard from './MenuCard';
 
 const categories = [
+  "all",
   "pizza",
   "biriyani",
   "chicken",
@@ -20,10 +21,10 @@ const foodTypes = [
   {label:"Seasonal", value:"seasonal"}
 ]
 
-const menu = [1, 1, 1, 1, 1]
+const menu = [1, 1, 1]
 
 const RestaurantDetails = () => {
-  const [foodType, setFoodType] = useState("all")
+  const [foodType] = useState("all")
 
   const handleFilter =(e)=> {
     console.log(e.target.value, e.target.name);
@@ -41,13 +42,11 @@ const RestaurantDetails = () => {
               src="https://th.bing.com/th/id/OIP.XMeHXAOzWMYBrepKs2vfxgHaD5?rs=1&pid=ImgDetMain" alt="food palace pic" />
             </Grid>
             <Grid item xs={12} lg={6}>
-              <img className='w-full h-[50vh] object-cover' 
+              <img className='w-full h-[40vh] object-cover' 
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7OjFasyleFJETcgO2HgVcGZbh5oekboEh7IwEUz7VwspRUTqmbXBPWSrimeRpMs3QR30&usqp=CAU" alt="food palace pic" />
             </Grid>
             <Grid item xs={12} lg={6}>
-              {/* <img className='w-full h-[40vh] object-cover' 
-              src="https://media.istockphoto.com/id/1210195062/photo/close-up-image-of-females-hands-chopping-green-onion-on-wooden-cutting-board.jpg?s=1024x1024&w=is&k=20&c=EqOGeqH3fp-jXKXd8LK5MTA1uA5qKFBVH3j1NP40088=" alt="an img" /> */}
-              <iframe className='w-full h-[50vh] object-cover'  src="https://www.youtube.com/embed/95BCU1n268w?si=3zFF6olfasihaFVw" title="Welcome to Restoura" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <iframe className='w-full h-[40vh] object-cover'  src="https://www.youtube.com/embed/95BCU1n268w?si=3zFF6olfasihaFVw" title="Welcome to Restoura" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </Grid>
           </Grid>
         </div>
