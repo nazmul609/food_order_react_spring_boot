@@ -1,9 +1,34 @@
-import React from 'react'
-import { Grid } from '@mui/material'; // Import Grid from Material-UI
+import React, { useState } from 'react'
+import { FormControlLabel, Grid, Typography, RadioGroup, Divider, FormControl, Radio } from '@mui/material'; // Import Grid from Material-UI
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import MenuCard from './MenuCard';
+
+const categories = [
+  "pizza",
+  "biriyani",
+  "chicken",
+  "beef",
+  "burger",
+  "rice"
+]
+
+const foodTypes = [
+  {label:"All", value:"all"},
+  {label:"Vegetarian Only", value:"vegetarian"},
+  {label:"Non Vegetarian", value:"non_vegetarian"},
+  {label:"Seasonal", value:"seasonal"}
+]
+
+const menu = [1, 1, 1, 1, 1]
 
 const RestaurantDetails = () => {
+  const [foodType, setFoodType] = useState("all")
+
+  const handleFilter =(e)=> {
+    console.log(e.target.value, e.target.name);
+  }
+
   return (
     <div className='px-5 lg:px-20'>
 
@@ -13,15 +38,16 @@ const RestaurantDetails = () => {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <img className='w-full h-[40vh] object-cover' 
-              src="https://media.istockphoto.com/id/1477430966/photo/woman-preparing-quinoa-vegetable-mix-cooked-in-a-frying-pan.jpg?s=1024x1024&w=is&k=20&c=k2L_kP_YwX9LVGeb45UbNYPlX85hcUQf2dp57iWTMAE=" alt="food palace pic" />
+              src="https://th.bing.com/th/id/OIP.XMeHXAOzWMYBrepKs2vfxgHaD5?rs=1&pid=ImgDetMain" alt="food palace pic" />
             </Grid>
             <Grid item xs={12} lg={6}>
-              <img className='w-full h-[40vh] object-cover' 
-              src="https://media.istockphoto.com/id/1210195062/photo/close-up-image-of-females-hands-chopping-green-onion-on-wooden-cutting-board.jpg?s=1024x1024&w=is&k=20&c=EqOGeqH3fp-jXKXd8LK5MTA1uA5qKFBVH3j1NP40088=" alt="food palace pic" />
+              <img className='w-full h-[50vh] object-cover' 
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7OjFasyleFJETcgO2HgVcGZbh5oekboEh7IwEUz7VwspRUTqmbXBPWSrimeRpMs3QR30&usqp=CAU" alt="food palace pic" />
             </Grid>
             <Grid item xs={12} lg={6}>
-              <img className='w-full h-[40vh] object-cover' 
-              src="https://media.istockphoto.com/id/1210195062/photo/close-up-image-of-females-hands-chopping-green-onion-on-wooden-cutting-board.jpg?s=1024x1024&w=is&k=20&c=EqOGeqH3fp-jXKXd8LK5MTA1uA5qKFBVH3j1NP40088=" alt="an img" />
+              {/* <img className='w-full h-[40vh] object-cover' 
+              src="https://media.istockphoto.com/id/1210195062/photo/close-up-image-of-females-hands-chopping-green-onion-on-wooden-cutting-board.jpg?s=1024x1024&w=is&k=20&c=EqOGeqH3fp-jXKXd8LK5MTA1uA5qKFBVH3j1NP40088=" alt="an img" /> */}
+              <iframe className='w-full h-[50vh] object-cover'  src="https://www.youtube.com/embed/95BCU1n268w?si=3zFF6olfasihaFVw" title="Welcome to Restoura" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </Grid>
           </Grid>
         </div>
@@ -38,7 +64,53 @@ const RestaurantDetails = () => {
           </div>
         </div>
       </section>
-
+      <Divider/>
+      <section className='pt-[2rem] lg:flex relative'>
+        <div className='space-y-10 lg:w-[20%] filter'>
+          <div className='box space-y-5 lg:sticky top-28'>
+            <div>
+              <Typography variant="h5" sx={{paddingBottom:"1rem"}}>
+                Food Type
+              </Typography>
+              <FormControl className="py-10 space-y-5" component={"fieldset"}>
+                <RadioGroup onChange={handleFilter} name="food_type" value={foodType}> 
+                  {foodTypes.map((item)=>(
+                    <FormControlLabel
+                    key={item.value}
+                      value={item.value}
+                      control={<Radio />}
+                      label={item.label}
+                    />
+                  )
+                  )}
+                </RadioGroup>
+              </FormControl>
+            </div>
+            <Divider/>
+            <div>
+              <Typography variant="h5" sx={{paddingBottom:"1rem"}}>
+                Food Category
+              </Typography>
+              <FormControl className="py-10 space-y-5" component={"fieldset"}>
+                <RadioGroup onChange={handleFilter} name="food_type" value={foodType}> 
+                  {categories.map((item)=>(
+                    <FormControlLabel
+                    key={item}
+                      value={item}
+                      control={<Radio />}
+                      label={item}
+                    />
+                  )
+                  )}
+                </RadioGroup>
+              </FormControl>
+            </div>
+          </div>
+        </div>
+        <div className='space-y-10 lg:w-[80%] menu'>
+          {menu.map((item)=><MenuCard/>)}
+        </div>
+      </section>
     </div>
   )
 }
