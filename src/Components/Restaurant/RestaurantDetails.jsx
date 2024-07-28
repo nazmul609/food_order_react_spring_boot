@@ -25,6 +25,7 @@ const menu = [1, 1, 1]
 
 const RestaurantDetails = () => {
   const [foodType] = useState("all")
+  // there was [foodType,setFoodType]
 
   const handleFilter =(e)=> {
     console.log(e.target.value, e.target.name);
